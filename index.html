@@ -340,14 +340,27 @@
           
             <ul>
 <li><p>先看一段google code的一段串口代码，在这段代码因为mInputStream.read(buffer)是阻塞方法，如果未接受数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.</p>
-<pre><code>if (mInputStream == null) return;
-            if (mInputStream.available() &gt; 0) {
-                size = mInputStream.read(buffer);
-                if (size &gt; 0) {
-                    onDataReceived(buffer, size);
+<pre><code>private class ReadThread extends Thread {
+        @Override
+        public void run() {
+            super.run();
+            while(!isInterrupted()) {
+                int size;
+                try {
+                    byte[] buffer = new byte[64];
+                    if (mInputStream == null) return;
+                    size = mInputStream.read(buffer);
+                    if (size &gt; 0) {
+                        onDataReceived(buffer, size);
+                    }
+                    SystemClock.sleep(100);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return;
                 }
             }
-SystemClock.sleep(100);
+        }
+    }
 </code></pre></li>
 </ul>
 <ul>
