@@ -338,8 +338,8 @@
       
         
           
-            <ol>
-<li><p>先看一段google code的一段串口代码，在这段代码因为mInputStream.read(buffer)是阻塞方法，如果未接受数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析。</p>
+            <ul>
+<li><p>先看一段google code的一段串口代码，在这段代码因为mInputStream.read(buffer)是阻塞方法，如果未接受数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.</p>
 <pre><code>if (mInputStream == null) return;
             if (mInputStream.available() &gt; 0) {
                 size = mInputStream.read(buffer);
@@ -349,8 +349,8 @@
             }
 SystemClock.sleep(100);
 </code></pre></li>
-</ol>
-<ol>
+</ul>
+<ul>
 <li><p>解决方法很简单，添加一个mInputStream.available() &gt; 0，如果有数据，就进行读取。这里就避开了阻塞问题</p>
 <pre><code>private class ReadThread extends Thread {
     @Override
@@ -376,7 +376,7 @@ SystemClock.sleep(100);
     }
 }
 </code></pre></li>
-</ol>
+</ul>
 
           
         
