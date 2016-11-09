@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="先看一段google code的一段串口代码，在这段代码因为mInputStream.read(buffer)是阻塞方法，如果未接受数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
-private class ReadThread extends Thread {">
+<meta name="description" content="先看一段google code的一段串口代码，在这段代码有这么一行mInputStream.read(buffer)，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
+private class">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于google项目android-serialport-api的MAT分析">
 <meta property="og:url" content="http://yoursite.com/2016/11/09/基于google项目android-serialport-api的MAT分析/index.html">
 <meta property="og:site_name" content="Chris cheng'Blog">
-<meta property="og:description" content="先看一段google code的一段串口代码，在这段代码因为mInputStream.read(buffer)是阻塞方法，如果未接受数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
-private class ReadThread extends Thread {">
-<meta property="og:updated_time" content="2016-11-09T07:29:14.022Z">
+<meta property="og:description" content="先看一段google code的一段串口代码，在这段代码有这么一行mInputStream.read(buffer)，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
+private class">
+<meta property="og:updated_time" content="2016-11-09T07:46:55.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于google项目android-serialport-api的MAT分析">
-<meta name="twitter:description" content="先看一段google code的一段串口代码，在这段代码因为mInputStream.read(buffer)是阻塞方法，如果未接受数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
-private class ReadThread extends Thread {">
+<meta name="twitter:description" content="先看一段google code的一段串口代码，在这段代码有这么一行mInputStream.read(buffer)，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
+private class">
 
 
 
@@ -336,7 +336,7 @@ private class ReadThread extends Thread {">
 
       
         <ul>
-<li><p>先看一段google code的一段串口代码，在这段代码因为mInputStream.read(buffer)是阻塞方法，如果未接受数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.</p>
+<li><p>先看一段google code的一段串口代码，在这段代码有这么一行<strong>mInputStream.read(buffer)</strong>，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.</p>
 <pre><code>private class ReadThread extends Thread {
         @Override
         public void run() {
@@ -361,7 +361,7 @@ private class ReadThread extends Thread {">
 </code></pre></li>
 </ul>
 <ul>
-<li><p>解决方法很简单，添加一个mInputStream.available() &gt; 0，如果有数据，就进行读取。这里就避开了阻塞问题</p>
+<li><p>解决方法很简单，添加一个mInputStream.available() &gt; 0，如果有数据，就进行读取。没有数据就不读取。这样就避开了阻塞问题。</p>
 <pre><code>private class ReadThread extends Thread {
     @Override
     public void run() {
