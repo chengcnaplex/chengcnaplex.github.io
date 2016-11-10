@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android,MAT," />
+  <meta name="keywords" content="Android,JNI," />
 
 
 
@@ -84,19 +84,53 @@
 
 
 
-<meta name="description" content="先看一段google code的一段串口代码，在这段代码有这么一行mInputStream.read(buffer)，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
-123456789101112">
+<meta name="description" content="这是一个基于Android studio 的JNIdemo，仅供学习
+Demo地址
+新建工程
+
+新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：
+;
+
+
+配置环境
+
+找到gradle.properties,在下面加上一行android.useDeprecatedNdk=true，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于google项目android-serialport-api的MAT分析">
-<meta property="og:url" content="http://yoursite.com/2016/11/09/基于google项目android-serialport-api的MAT分析/index.html">
+<meta property="og:title" content="如何在AndroidStudio下使用JNI">
+<meta property="og:url" content="http://yoursite.com/2016/11/10/如何在AndroidStudio下使用JNI/index.html">
 <meta property="og:site_name" content="Chris cheng'Blog">
-<meta property="og:description" content="先看一段google code的一段串口代码，在这段代码有这么一行mInputStream.read(buffer)，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
-123456789101112">
-<meta property="og:updated_time" content="2016-11-10T08:00:23.649Z">
+<meta property="og:description" content="这是一个基于Android studio 的JNIdemo，仅供学习
+Demo地址
+新建工程
+
+新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：
+;
+
+
+配置环境
+
+找到gradle.properties,在下面加上一行android.useDeprecatedNdk=true，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示">
+<meta property="og:image" content="http://yoursite.com/picture_blog3/project.png">
+<meta property="og:image" content="http://yoursite.com/picture_blog3/properties.png">
+<meta property="og:image" content="http://yoursite.com/picture_blog3/buildgradle.png">
+<meta property="og:image" content="http://yoursite.com/picture_blog3/cmd.png">
+<meta property="og:image" content="http://yoursite.com/picture_blog3/hellofromc.png">
+<meta property="og:image" content="http://yoursite.com/picture_blog3/sayhellotoc.png">
+<meta property="og:updated_time" content="2016-11-10T09:12:34.843Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于google项目android-serialport-api的MAT分析">
-<meta name="twitter:description" content="先看一段google code的一段串口代码，在这段代码有这么一行mInputStream.read(buffer)，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
-123456789101112">
+<meta name="twitter:title" content="如何在AndroidStudio下使用JNI">
+<meta name="twitter:description" content="这是一个基于Android studio 的JNIdemo，仅供学习
+Demo地址
+新建工程
+
+新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：
+;
+
+
+配置环境
+
+找到gradle.properties,在下面加上一行android.useDeprecatedNdk=true，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示">
+<meta name="twitter:image" content="http://yoursite.com/picture_blog3/project.png">
 
 
 
@@ -117,10 +151,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/09/基于google项目android-serialport-api的MAT分析/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/10/如何在AndroidStudio下使用JNI/"/>
 
 
-  <title> 基于google项目android-serialport-api的MAT分析 | Chris cheng'Blog </title>
+  <title> 如何在AndroidStudio下使用JNI | Chris cheng'Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +303,7 @@
             
             
               
-                基于google项目android-serialport-api的MAT分析
+                如何在AndroidStudio下使用JNI
               
             
           </h1>
@@ -281,8 +315,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-09T14:58:19+08:00" content="2016-11-09">
-              2016-11-09
+            <time itemprop="dateCreated" datetime="2016-11-10T16:46:38+08:00" content="2016-11-10">
+              2016-11-10
             </time>
           </span>
 
@@ -311,8 +345,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/09/基于google项目android-serialport-api的MAT分析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/09/基于google项目android-serialport-api的MAT分析/" itemprop="commentsCount"></span>
+                <a href="/2016/11/10/如何在AndroidStudio下使用JNI/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/10/如何在AndroidStudio下使用JNI/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -335,10 +369,142 @@
       
 
       
-        <p>先看一段google code的一段串口代码，在这段代码有这么一行<strong>mInputStream.read(buffer)</strong>，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>.run();</div><div class="line">            <span class="keyword">while</span>(!isInterrupted()) &#123;</div><div class="line">                <span class="keyword">int</span> size;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">64</span>];</div><div class="line">                    <span class="keyword">if</span> (mInputStream == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">                    size = mInputStream.read(buffer);</div><div class="line">                    <span class="keyword">if</span> (size &gt; <span class="number">0</span>) &#123;</div><div class="line">                        onDataReceived(buffer, size);</div><div class="line">                    &#125;</div><div class="line">                    SystemClock.sleep(<span class="number">100</span>);</div><div class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>解决方法很简单，添加一个mInputStream.available() &gt; 0，如果有数据，就进行读取。没有数据就不读取。这样就避开了阻塞问题。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.run();</div><div class="line">        <span class="keyword">while</span>(!isInterrupted()) &#123;</div><div class="line">            <span class="keyword">int</span> size;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">64</span>];</div><div class="line">                <span class="keyword">if</span> (mInputStream == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">                <span class="keyword">if</span> (mInputStream.available() &gt; <span class="number">0</span>) &#123;</div><div class="line">                    size = mInputStream.read(buffer);</div><div class="line">                    <span class="keyword">if</span> (size &gt; <span class="number">0</span>) &#123;</div><div class="line">                        onDataReceived(buffer, size);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                SystemClock.sleep(<span class="number">100</span>);</div><div class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">                <span class="keyword">return</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p><strong>这是一个基于Android studio 的JNIdemo，仅供学习</strong></p>
+<p><a href="https://github.com/chengcnaplex/JNIDemo" target="_blank" rel="external">Demo地址</a></p>
+<p><strong>新建工程</strong></p>
+<ul>
+<li><p>新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：</p>
+<p><img src="picture_blog3/project.png" alt="">;</p>
+</li>
+</ul>
+<p><strong>配置环境</strong></p>
+<ul>
+<li><strong>找到gradle.properties,在下面加上一行<font color="red">android.useDeprecatedNdk=true</font>，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示</strong></li>
+</ul>
+<p><img src="picture_blog3/properties.png" alt=""></p>
+<ul>
+<li><p><strong>找到app目录下的build.gradle，在defaultConfig里面加上，这里的作用相当与makefile</strong></p>
+<p>   ndk {</p>
+<pre><code>//在JNI打log 必须加上log,否则会报错log函数未定义,
+ldLibs &quot;log&quot;
+//指定生成模块名字,也就是最终的动态库名aplex,相应库文件名libaplex.so moduleName &quot;aplex&quot;
+moduleName &quot;aplex&quot;
+// 指定生成哪些处理器架构的动态库文件，如果要运行在x86架构处理器一定需要指定 abiFilters &quot;armeabi&quot; , &quot;x86&quot;
+abiFilters &quot;armeabi&quot;, &quot;x86&quot;, &quot;armeabi-v7a&quot;
+</code></pre><p>   }</p>
+</li>
+</ul>
+<p>如下图所示</p>
+<p><img src="picture_blog3/buildgradle.png" alt=""></p>
+<p><strong>编译工程</strong></p>
+<ul>
+<li><p><strong>新建一个类JniNative，并在类中写两个native方法。</strong></p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JniNative</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> &#123;</div><div class="line">        System.loadLibrary(<span class="string">"aplex"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">sayHelloToC</span><span class="params">(String str)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> String <span class="title">HelloFromC</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p><strong>这里要注意：System.loadLibrary(“aplex”)会去data\data\packagname\lib下面去找libaplex.so库</strong></p>
+</blockquote>
+<ul>
+<li><p><strong>把.java文件编译成.class文件</strong></p>
+<blockquote>
+<p><strong>选择整个项目，找到导航栏，做如下操作：Build-&gt;Make Modlues app。</strong> </p>
+</blockquote>
+</li>
+<li><p><strong>把.class文件编译成.h文件</strong></p>
+<ul>
+<li>打开命令行插件Terminal</li>
+<li>进入app/build/inermediates/classes/debug目录下</li>
+<li>使用命令javah 包名+类名 把.class文件编译成.h文件</li>
+<li>这个.h文件会生成在\app\build\intermediates\classes\debug目录下，我的.h文件叫com_example_aplex_jnidemo_JniNative.h</li>
+</ul>
+</li>
+</ul>
+<p>如图所示：</p>
+<p><img src="picture_blog3/cmd.png" alt=""></p>
+<ul>
+<li><p><strong>整理编写jni</strong></p>
+<ul>
+<li>在app\src\main 下面新建一个名叫jni的目录</li>
+<li>把刚刚生成的.h文件拷到jni目录中</li>
+<li>jni目录下创建一个.c文件 </li>
+<li><p>把com_example_aplex_jnidemo_JniNative.h内容拷到.c文件中，并且实现.h文件中的函数定义</p>
+<pre><code>/* DO NOT EDIT THIS FILE - it is machine generated */
+#include &lt;jni.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+/* Header for class com_example_aplex_jnidemo_JniNative */
+
+#ifndef _Included_com_example_aplex_jnidemo_JniNative
+#define _Included_com_example_aplex_jnidemo_JniNative
+
+#include &quot;android/log.h&quot;
+static const char *TAG=&quot;JNIDEMO&quot;;
+#define LOGE(fmt, args...) __android_log_print(ANDROID_LOG_ERROR, TAG, fmt, ##args)
+
+#ifdef __cplusplus
+extern &quot;C&quot; {
+#endif
+/*
+ * Class:     com_example_aplex_jnidemo_JniNative
+ * Method:    sayHelloToC
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_example_aplex_jnidemo_JniNative_sayHelloToC
+        (JNIEnv * env, jclass clazz,jstring hellostring){
+        char* pStr = NULL;
+
+        jclass     jstrObj   = (*env)-&gt;FindClass(env, &quot;java/lang/String&quot;);
+        jstring    encode    = (*env)-&gt;NewStringUTF(env, &quot;utf-8&quot;);
+        jmethodID  methodId  = (*env)-&gt;GetMethodID(env, jstrObj, &quot;getBytes&quot;, &quot;(Ljava/lang/String;)[B&quot;);
+        jbyteArray byteArray = (jbyteArray)(*env)-&gt;CallObjectMethod(env, hellostring, methodId, encode);
+        jsize      strLen    = (*env)-&gt;GetArrayLength(env, byteArray);
+        jbyte      *jBuf     = (*env)-&gt;GetByteArrayElements(env, byteArray, JNI_FALSE);
+        if (jBuf &gt; 0)
+        {
+                pStr = (char*)malloc(strLen + 1);
+
+                if (!pStr)
+                {
+                        return;
+                }
+                memcpy(pStr, jBuf, strLen);
+
+                pStr[strLen] = 0;
+        }
+     LOGE(&quot;%s&quot;,pStr);
+        (*env)-&gt;ReleaseByteArrayElements(env, byteArray, jBuf, 0);
+
+}
+
+/*
+ * Class:     com_example_aplex_jnidemo_JniNative
+ * Method:    HelloFromC
+ * Signature: ()Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_example_aplex_jnidemo_JniNative_HelloFromC
+        (JNIEnv * env, jclass clazz){
+        char * hello = &quot;hello&quot;;
+        return  (*env)-&gt;NewStringUTF(env,hello);
+}
+
+#ifdef __cplusplus
+}
+#endif
+#endif
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>在MainActivity中调用JNI</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHelloToc</span><span class="params">(View view)</span></span>&#123;</div><div class="line">      	JniNative.sayHelloToC(<span class="string">"Hello C"</span>);</div><div class="line">   &#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">HelloFromC</span><span class="params">(View view)</span></span>&#123;</div><div class="line">       Toast.makeText(MainActivity.<span class="keyword">this</span>, JniNative.HelloFromC(), Toast.LENGTH_SHORT).show();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>效果,如图所示:</strong> </li>
+</ul>
+<p><img src="picture_blog3/hellofromc.png" alt=""></p>
+<p><img src="picture_blog3/sayhellotoc.png" alt=""></p>
 
       
     </div>
@@ -363,7 +529,7 @@
           
             <a href="/tags/Android/" rel="tag">#Android</a>
           
-            <a href="/tags/MAT/" rel="tag">#MAT</a>
+            <a href="/tags/JNI/" rel="tag">#JNI</a>
           
         </div>
       
@@ -372,17 +538,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/09/如何使用Hexo/" rel="next" title="如何使用Hexo">
-                <i class="fa fa-chevron-left"></i> 如何使用Hexo
+              <a href="/2016/11/09/基于google项目android-serialport-api的MAT分析/" rel="next" title="基于google项目android-serialport-api的MAT分析">
+                <i class="fa fa-chevron-left"></i> 基于google项目android-serialport-api的MAT分析
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/10/如何在AndroidStudio下使用JNI/" rel="prev" title="如何在AndroidStudio下使用JNI">
-                如何在AndroidStudio下使用JNI <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -408,8 +570,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/09/基于google项目android-serialport-api的MAT分析/"
-           data-title="基于google项目android-serialport-api的MAT分析" data-url="http://yoursite.com/2016/11/09/基于google项目android-serialport-api的MAT分析/">
+      <div class="ds-thread" data-thread-key="2016/11/10/如何在AndroidStudio下使用JNI/"
+           data-title="如何在AndroidStudio下使用JNI" data-url="http://yoursite.com/2016/11/10/如何在AndroidStudio下使用JNI/">
       </div>
     
   </div>
