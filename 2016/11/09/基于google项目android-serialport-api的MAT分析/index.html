@@ -85,18 +85,18 @@
 
 
 <meta name="description" content="先看一段google code的一段串口代码，在这段代码有这么一行mInputStream.read(buffer)，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
-private class">
+123456789101112">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于google项目android-serialport-api的MAT分析">
 <meta property="og:url" content="http://yoursite.com/2016/11/09/基于google项目android-serialport-api的MAT分析/index.html">
 <meta property="og:site_name" content="Chris cheng'Blog">
 <meta property="og:description" content="先看一段google code的一段串口代码，在这段代码有这么一行mInputStream.read(buffer)，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
-private class">
-<meta property="og:updated_time" content="2016-11-09T07:46:55.535Z">
+123456789101112">
+<meta property="og:updated_time" content="2016-11-10T08:00:23.649Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于google项目android-serialport-api的MAT分析">
 <meta name="twitter:description" content="先看一段google code的一段串口代码，在这段代码有这么一行mInputStream.read(buffer)，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
-private class">
+123456789101112">
 
 
 
@@ -192,22 +192,22 @@ private class">
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -335,58 +335,10 @@ private class">
       
 
       
-        <ul>
-<li><p>先看一段google code的一段串口代码，在这段代码有这么一行<strong>mInputStream.read(buffer)</strong>，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.</p>
-<pre><code>private class ReadThread extends Thread {
-        @Override
-        public void run() {
-            super.run();
-            while(!isInterrupted()) {
-                int size;
-                try {
-                    byte[] buffer = new byte[64];
-                    if (mInputStream == null) return;
-                    size = mInputStream.read(buffer);
-                    if (size &gt; 0) {
-                        onDataReceived(buffer, size);
-                    }
-                    SystemClock.sleep(100);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    return;
-                }
-            }
-        }
-    }
-</code></pre></li>
-</ul>
-<ul>
-<li><p>解决方法很简单，添加一个mInputStream.available() &gt; 0，如果有数据，就进行读取。没有数据就不读取。这样就避开了阻塞问题。</p>
-<pre><code>private class ReadThread extends Thread {
-    @Override
-    public void run() {
-        super.run();
-        while(!isInterrupted()) {
-            int size;
-            try {
-                byte[] buffer = new byte[64];
-                if (mInputStream == null) return;
-                if (mInputStream.available() &gt; 0) {
-                    size = mInputStream.read(buffer);
-                    if (size &gt; 0) {
-                        onDataReceived(buffer, size);
-                    }
-                }
-                SystemClock.sleep(100);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return;
-            }
-        }
-    }
-}
-</code></pre></li>
-</ul>
+        <p>先看一段google code的一段串口代码，在这段代码有这么一行<strong>mInputStream.read(buffer)</strong>，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>.run();</div><div class="line">            <span class="keyword">while</span>(!isInterrupted()) &#123;</div><div class="line">                <span class="keyword">int</span> size;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">64</span>];</div><div class="line">                    <span class="keyword">if</span> (mInputStream == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">                    size = mInputStream.read(buffer);</div><div class="line">                    <span class="keyword">if</span> (size &gt; <span class="number">0</span>) &#123;</div><div class="line">                        onDataReceived(buffer, size);</div><div class="line">                    &#125;</div><div class="line">                    SystemClock.sleep(<span class="number">100</span>);</div><div class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>解决方法很简单，添加一个mInputStream.available() &gt; 0，如果有数据，就进行读取。没有数据就不读取。这样就避开了阻塞问题。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.run();</div><div class="line">        <span class="keyword">while</span>(!isInterrupted()) &#123;</div><div class="line">            <span class="keyword">int</span> size;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">64</span>];</div><div class="line">                <span class="keyword">if</span> (mInputStream == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">                <span class="keyword">if</span> (mInputStream.available() &gt; <span class="number">0</span>) &#123;</div><div class="line">                    size = mInputStream.read(buffer);</div><div class="line">                    <span class="keyword">if</span> (size &gt; <span class="number">0</span>) &#123;</div><div class="line">                        onDataReceived(buffer, size);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                SystemClock.sleep(<span class="number">100</span>);</div><div class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">                <span class="keyword">return</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
