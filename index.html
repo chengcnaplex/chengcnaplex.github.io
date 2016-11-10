@@ -342,15 +342,14 @@
 <p><a href="https://github.com/chengcnaplex/JNIDemo" target="_blank" rel="external">Demo地址</a></p>
 <p><strong>新建工程</strong></p>
 <ul>
-<li><p>新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：</p>
-<p><img src="picture_blog3/project.png" alt="">;</p>
-</li>
+<li>新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：</li>
 </ul>
+<p><img src="https://github.com/chengcnaplex/JNIDemo/blob/master/img/project.png" alt="">;</p>
 <p><strong>配置环境</strong></p>
 <ul>
 <li><strong>找到gradle.properties,在下面加上一行<font color="red">android.useDeprecatedNdk=true</font>，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示</strong></li>
 </ul>
-<p><img src="picture_blog3/properties.png" alt=""></p>
+<p><img src="https://github.com/chengcnaplex/JNIDemo/blob/master/img/properties.png" alt=""></p>
 <ul>
 <li><p><strong>找到app目录下的build.gradle，在defaultConfig里面加上，这里的作用相当与makefile</strong></p>
 <p>   ndk {</p>
@@ -364,7 +363,7 @@ abiFilters &quot;armeabi&quot;, &quot;x86&quot;, &quot;armeabi-v7a&quot;
 </li>
 </ul>
 <p>如下图所示</p>
-<p><img src="picture_blog3/buildgradle.png" alt=""></p>
+<p><img src="https://github.com/chengcnaplex/JNIDemo/blob/master/img/buildgradle.png" alt=""></p>
 <p><strong>编译工程</strong></p>
 <ul>
 <li><p><strong>新建一个类JniNative，并在类中写两个native方法。</strong></p>
@@ -390,7 +389,7 @@ abiFilters &quot;armeabi&quot;, &quot;x86&quot;, &quot;armeabi-v7a&quot;
 </li>
 </ul>
 <p>如图所示：</p>
-<p><img src="picture_blog3/cmd.png" alt=""></p>
+<p><img src="https://github.com/chengcnaplex/JNIDemo/blob/master/img/cmd.png" alt=""></p>
 <ul>
 <li><p><strong>整理编写jni</strong></p>
 <ul>
@@ -472,8 +471,8 @@ JNIEXPORT jstring JNICALL Java_com_example_aplex_jnidemo_JniNative_HelloFromC
 <ul>
 <li><strong>效果,如图所示:</strong> </li>
 </ul>
-<p><img src="picture_blog3/hellofromc.png" alt=""></p>
-<p><img src="picture_blog3/sayhellotoc.png" alt=""></p>
+<p><img src="https://github.com/chengcnaplex/JNIDemo/blob/master/img/hellofromc.png" alt=""></p>
+<p><img src="https://github.com/chengcnaplex/JNIDemo/blob/master/img/sayhellotoc.png" alt=""></p>
 
           
         
