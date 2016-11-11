@@ -42,7 +42,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android,MAT," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -58,19 +58,61 @@
 
 
 
-<meta name="description" content="先看一段google code的一段串口代码，在这段代码有这么一行mInputStream.read(buffer)，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
-123456789101112">
+<meta name="description" content="安装
+安装ftp服务器vsftpd
+apt-get install vsftpd
+
+安装 存储虚拟用户的账户密码 的数据库
+apt-get install db4.8-util
+
+
+配置创建虚拟账户主目录
+在/home/vsftpd/路径下新建文件夹
+* cmz_ftp_home
+* chyq_ftp_home
+* tony_ftp_home 
+* zengjf_ftp_home
+ 命令如下：
+c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于google项目android-serialport-api的MAT分析">
-<meta property="og:url" content="http://yoursite.com/2016/11/09/基于google项目android-serialport-api的MAT分析/index.html">
+<meta property="og:title" content="Ubantu操作系统下搭建FTP服务器">
+<meta property="og:url" content="http://yoursite.com/2016/11/11/Ubantu操作系统下搭建FTP服务器/index.html">
 <meta property="og:site_name" content="Chris cheng'Blog">
-<meta property="og:description" content="先看一段google code的一段串口代码，在这段代码有这么一行mInputStream.read(buffer)，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
-123456789101112">
-<meta property="og:updated_time" content="2016-11-10T09:57:20.885Z">
+<meta property="og:description" content="安装
+安装ftp服务器vsftpd
+apt-get install vsftpd
+
+安装 存储虚拟用户的账户密码 的数据库
+apt-get install db4.8-util
+
+
+配置创建虚拟账户主目录
+在/home/vsftpd/路径下新建文件夹
+* cmz_ftp_home
+* chyq_ftp_home
+* tony_ftp_home 
+* zengjf_ftp_home
+ 命令如下：
+c">
+<meta property="og:updated_time" content="2016-11-11T08:06:50.570Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于google项目android-serialport-api的MAT分析">
-<meta name="twitter:description" content="先看一段google code的一段串口代码，在这段代码有这么一行mInputStream.read(buffer)，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.
-123456789101112">
+<meta name="twitter:title" content="Ubantu操作系统下搭建FTP服务器">
+<meta name="twitter:description" content="安装
+安装ftp服务器vsftpd
+apt-get install vsftpd
+
+安装 存储虚拟用户的账户密码 的数据库
+apt-get install db4.8-util
+
+
+配置创建虚拟账户主目录
+在/home/vsftpd/路径下新建文件夹
+* cmz_ftp_home
+* chyq_ftp_home
+* tony_ftp_home 
+* zengjf_ftp_home
+ 命令如下：
+c">
 
 
 
@@ -91,10 +133,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/09/基于google项目android-serialport-api的MAT分析/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/11/Ubantu操作系统下搭建FTP服务器/"/>
 
 
-  <title> 基于google项目android-serialport-api的MAT分析 | Chris cheng'Blog </title>
+  <title> Ubantu操作系统下搭建FTP服务器 | Chris cheng'Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -243,7 +285,7 @@
             
             
               
-                基于google项目android-serialport-api的MAT分析
+                Ubantu操作系统下搭建FTP服务器
               
             
           </h1>
@@ -255,38 +297,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-09T14:58:19+08:00" content="2016-11-09">
-              2016-11-09
+            <time itemprop="dateCreated" datetime="2016-11-11T15:39:45+08:00" content="2016-11-11">
+              2016-11-11
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/09/基于google项目android-serialport-api的MAT分析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/09/基于google项目android-serialport-api的MAT分析/" itemprop="commentsCount"></span>
+                <a href="/2016/11/11/Ubantu操作系统下搭建FTP服务器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/11/Ubantu操作系统下搭建FTP服务器/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -309,11 +332,128 @@
       
 
       
-        <p>先看一段google code的一段串口代码，在这段代码有这么一行<strong>mInputStream.read(buffer)</strong>，这是输入流的阻塞方法。如果mInputStream.read(buffer)未接收到数据，就重复关闭开启含有这段代码的Activity.就会造成Activity泄露，泄露现象通过重复开启关闭Activity,记录每一次的内存快照，再用MAT进行分析.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>.run();</div><div class="line">            <span class="keyword">while</span>(!isInterrupted()) &#123;</div><div class="line">                <span class="keyword">int</span> size;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">64</span>];</div><div class="line">                    <span class="keyword">if</span> (mInputStream == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">                    size = mInputStream.read(buffer);</div><div class="line">                    <span class="keyword">if</span> (size &gt; <span class="number">0</span>) &#123;</div><div class="line">                        onDataReceived(buffer, size);</div><div class="line">                    &#125;</div><div class="line">                    SystemClock.sleep(<span class="number">100</span>);</div><div class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>解决方法很简单，添加一个mInputStream.available() &gt; 0，如果有数据，就进行读取。没有数据就不读取。这样就避开了阻塞问题。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.run();</div><div class="line">        <span class="keyword">while</span>(!isInterrupted()) &#123;</div><div class="line">            <span class="keyword">int</span> size;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">64</span>];</div><div class="line">                <span class="keyword">if</span> (mInputStream == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">                <span class="keyword">if</span> (mInputStream.available() &gt; <span class="number">0</span>) &#123;</div><div class="line">                    size = mInputStream.read(buffer);</div><div class="line">                    <span class="keyword">if</span> (size &gt; <span class="number">0</span>) &#123;</div><div class="line">                        onDataReceived(buffer, size);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                SystemClock.sleep(<span class="number">100</span>);</div><div class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">                <span class="keyword">return</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>安装ftp服务器vsftpd</p>
+<pre><code>apt-get install vsftpd
+</code></pre></li>
+<li><p>安装 存储虚拟用户的账户密码 的数据库</p>
+<pre><code>apt-get install db4.8-util
+</code></pre></li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="创建虚拟账户主目录"><a href="#创建虚拟账户主目录" class="headerlink" title="创建虚拟账户主目录"></a>创建虚拟账户主目录</h3><ol>
+<li><p>在<code>/home/vsftpd/</code>路径下新建文件夹</p>
+<pre><code>* cmz_ftp_home
+* chyq_ftp_home
+* tony_ftp_home 
+* zengjf_ftp_home
+</code></pre><p> 命令如下：</p>
+<pre><code>cd /home/  
+mkdir vsftpd  
+cd vsftpd  
+mkdir cmz_ftp_home chyq_ftp_home tony_ftp_home zengjf_ftp_home
+</code></pre></li>
+</ol>
+<h3 id="创建虚拟用户数据库"><a href="#创建虚拟用户数据库" class="headerlink" title="创建虚拟用户数据库"></a>创建虚拟用户数据库</h3><h4 id="生成数据库"><a href="#生成数据库" class="headerlink" title="生成数据库"></a>生成数据库</h4><ol>
+<li><p>在home目录下新建loguser.txt,并配置用户名密码  </p>
+<p>  命令如下：</p>
+<pre><code>cd  /home
+sudo  touch  /home/loguser.txt
+sudo  gedit   /home/loguser.txt
 
+在loguser.txt编辑如下内容：
+cmz  -----用户名
+cmz  -----密码
+chyq  -----用户名
+chyq  -----密码
+tony  -----用户名
+tony  -----密码
+zengjf  -----用户名
+zengjf  -----密码
+</code></pre></li>
+<li><p>通过命令把loguser.txt 生成用来保存虚拟用户的数据库</p>
+<p> 命令如下：</p>
+<pre><code>sudo db4.8_load -T -t hash -f /home/loguser.txt /etc/vsftpd_login.db
+</code></pre></li>
+<li><p>最后设置一下数据库文件的访问权限</p>
+<pre><code>sudo chmod 600 /etc/vsftpd_login.db
+</code></pre></li>
+</ol>
+<h4 id="配置PAM文件-把数据库关联到vsftpd上"><a href="#配置PAM文件-把数据库关联到vsftpd上" class="headerlink" title="配置PAM文件,把数据库关联到vsftpd上"></a>配置PAM文件,把数据库关联到vsftpd上</h4><ol>
+<li><p>我们上一步建立的<font color="red">数据库 vsftpd_login </font>在此处被使用</p>
+<p> 命令如下：</p>
+<pre><code>cd /etc/pam.d
+sudo touch vsftpd.vu 
+gedit vsftpd.vu 
+
+编辑文本，如下：
+
+auth sufficient pam_userdb.so db=/etc/vsftpd_login
+account sufficient pam_userdb.so db=/etc/vsftpd_login
+</code></pre></li>
+<li><p><font color="red">我们建立的虚拟用户将采用PAM进行验证</font>，这是通过/etc/vsftpd.conf文件中的 语句pam_service_name=vsftpd.vu来启用的，稍后你将发现。</p>
+</li>
+</ol>
+<h3 id="为虚拟用户创建本地系统用户"><a href="#为虚拟用户创建本地系统用户" class="headerlink" title="为虚拟用户创建本地系统用户"></a>为虚拟用户创建本地系统用户</h3><ol>
+<li><p>新建一个系统用户vsftpd，用户家目录为/home/vsftpd, 用户登录终端设为/bin/false(即使之不能登录系统)</p>
+</li>
+<li><p>添加系统用户vsftpd 权限根目录/home/vsftpd 并不能登录系统</p>
+<pre><code>sudo useradd vsftpd -d /home/vsftpd -s /bin/false
+</code></pre></li>
+<li><p>设置/home/vsftpd 的owner vsftpd:vsftpd(user:group)<br>只有这个用户和组内用户能看到这个文件</p>
+<pre><code>sudo chown vsftpd:vsftpd /home/vsftpd
+</code></pre></li>
+</ol>
+<h3 id="文件配置"><a href="#文件配置" class="headerlink" title="文件配置"></a>文件配置</h3><h4 id="配置vsftpd权限"><a href="#配置vsftpd权限" class="headerlink" title="配置vsftpd权限"></a>配置vsftpd权限</h4><ol>
+<li><p>进入/etc/vsftpd.conf，一般要确保含有以下设置：</p>
+<pre><code>listen=YES
+#匿名登录NO
+anonymous_enable=NO 
+dirmessage_enable=YES 
+xferlog_enable=YES 
+xferlog_file=/var/log/vsftpd.log 
+xferlog_std_format=YES 
+chroot_local_user=YES
+#虚拟用户登录YES
+guest_enable=YES
+#虚拟用户的本地用户名vsftpd
+guest_username=vsftpd
+#虚拟用户的权限配置文件
+user_config_dir=/etc/vsftpd_user_conf 
+#虚拟用户的关联数据库的配置文件
+pam_service_name=vsftpd.vu 
+#本地登录YES
+local_enable=YES 
+secure_chroot_dir=/var/run/vsftpd
+</code></pre></li>
+</ol>
+<h4 id="配置虚拟用户权限"><a href="#配置虚拟用户权限" class="headerlink" title="配置虚拟用户权限"></a>配置虚拟用户权限</h4><ol>
+<li><p>如果没有/etc/vsftpd_user_conf，创建vsftpd_user_conf目录</p>
+<pre><code>sudo mkdir /etc/vsftpd_user_conf
+</code></pre></li>
+<li><p>创建虚拟用户权限配置文件</p>
+<pre><code>cd /etc/vsftpd_user_conf 
+sudo touch cmz chyq tony zengjf
+</code></pre></li>
+<li><p>cmz 内容</p>
+<pre><code>local_root=/home/vsftpd/cmz
+</code></pre></li>
+<li><p>chyq 内容</p>
+<pre><code>local_root=/home/vsftpd/chyq
+</code></pre></li>
+<li><p>tony 内容</p>
+<pre><code>local_root=/home/vsftpd/tony 
+</code></pre></li>
+<li><p>zengjf 内容</p>
+<pre><code>write_enable=YES
+anon_world_readable_only=NO 
+anon_upload_enable=YES 
+anon_mkdir_write_enable=YES 
+anon_other_write_enable=YES 
+local_root=/home/vsftpd/zengjf
+</code></pre></li>
+</ol>
+<h3 id="重启服务器"><a href="#重启服务器" class="headerlink" title="重启服务器"></a>重启服务器</h3><pre><code>service vsftpd restart
+</code></pre>
       
     </div>
 
@@ -333,30 +473,18 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Android/" rel="tag">#Android</a>
-          
-            <a href="/tags/MAT/" rel="tag">#MAT</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/09/如何使用Hexo/" rel="next" title="如何使用Hexo">
-                <i class="fa fa-chevron-left"></i> 如何使用Hexo
+              <a href="/2016/11/10/如何在AndroidStudio下使用JNI/" rel="next" title="如何在AndroidStudio下使用JNI">
+                <i class="fa fa-chevron-left"></i> 如何在AndroidStudio下使用JNI
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/10/如何在AndroidStudio下使用JNI/" rel="prev" title="如何在AndroidStudio下使用JNI">
-                如何在AndroidStudio下使用JNI <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -382,8 +510,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/09/基于google项目android-serialport-api的MAT分析/"
-           data-title="基于google项目android-serialport-api的MAT分析" data-url="http://yoursite.com/2016/11/09/基于google项目android-serialport-api的MAT分析/">
+      <div class="ds-thread" data-thread-key="2016/11/11/Ubantu操作系统下搭建FTP服务器/"
+           data-title="Ubantu操作系统下搭建FTP服务器" data-url="http://yoursite.com/2016/11/11/Ubantu操作系统下搭建FTP服务器/">
       </div>
     
   </div>
@@ -521,7 +649,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建虚拟账户主目录"><span class="nav-number">2.1.</span> <span class="nav-text">创建虚拟账户主目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建虚拟用户数据库"><span class="nav-number">2.2.</span> <span class="nav-text">创建虚拟用户数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成数据库"><span class="nav-number">2.2.1.</span> <span class="nav-text">生成数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置PAM文件-把数据库关联到vsftpd上"><span class="nav-number">2.2.2.</span> <span class="nav-text">配置PAM文件,把数据库关联到vsftpd上</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为虚拟用户创建本地系统用户"><span class="nav-number">2.3.</span> <span class="nav-text">为虚拟用户创建本地系统用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件配置"><span class="nav-number">2.4.</span> <span class="nav-text">文件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置vsftpd权限"><span class="nav-number">2.4.1.</span> <span class="nav-text">配置vsftpd权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置虚拟用户权限"><span class="nav-number">2.4.2.</span> <span class="nav-text">配置虚拟用户权限</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启服务器"><span class="nav-number">2.5.</span> <span class="nav-text">重启服务器</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
