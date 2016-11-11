@@ -58,58 +58,37 @@
 
 
 
-<meta name="description" content="这是一个基于Android studio 的JNIdemo，仅供学习Demo地址
-新建工程
-新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：
+<meta name="description" content="这是一个基于Android studio 的JNIdemo，仅供学习。
+新建工程新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：
 
+配置环境找到gradle.properties,在下面加上一行android.useDeprecatedNdk=true，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示
 
-
-配置环境
-找到gradle.properties,在下面加上一行android.useDeprecatedNdk=true，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示
-  
-
-
-
-找">
+找到app目录下的build.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何在AndroidStudio下使用JNI">
 <meta property="og:url" content="http://yoursite.com/2016/11/10/如何在AndroidStudio下使用JNI/index.html">
 <meta property="og:site_name" content="Chris cheng'Blog">
-<meta property="og:description" content="这是一个基于Android studio 的JNIdemo，仅供学习Demo地址
-新建工程
-新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：
+<meta property="og:description" content="这是一个基于Android studio 的JNIdemo，仅供学习。
+新建工程新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：
 
+配置环境找到gradle.properties,在下面加上一行android.useDeprecatedNdk=true，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示
 
-
-配置环境
-找到gradle.properties,在下面加上一行android.useDeprecatedNdk=true，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示
-  
-
-
-
-找">
+找到app目录下的build.">
 <meta property="og:image" content="http://yoursite.com/\image\blog_3\project.png">
 <meta property="og:image" content="http://yoursite.com/\image\blog_3\properties.png">
 <meta property="og:image" content="http://yoursite.com/\image\blog_3\buildgradle.png">
 <meta property="og:image" content="http://yoursite.com/\image\blog_3\cmd.png">
 <meta property="og:image" content="http://yoursite.com/\image\blog_3\hellofromc.png">
 <meta property="og:image" content="http://yoursite.com/\image\blog_3\sayhellotoc.png">
-<meta property="og:updated_time" content="2016-11-10T09:32:38.219Z">
+<meta property="og:updated_time" content="2016-11-11T05:14:12.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在AndroidStudio下使用JNI">
-<meta name="twitter:description" content="这是一个基于Android studio 的JNIdemo，仅供学习Demo地址
-新建工程
-新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：
+<meta name="twitter:description" content="这是一个基于Android studio 的JNIdemo，仅供学习。
+新建工程新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：
 
+配置环境找到gradle.properties,在下面加上一行android.useDeprecatedNdk=true，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示
 
-
-配置环境
-找到gradle.properties,在下面加上一行android.useDeprecatedNdk=true，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示
-  
-
-
-
-找">
+找到app目录下的build.">
 <meta name="twitter:image" content="http://yoursite.com/\image\blog_3\project.png">
 
 
@@ -349,44 +328,22 @@
       
 
       
-        <h2 id="这是一个基于Android-studio-的JNIdemo，仅供学习"><a href="#这是一个基于Android-studio-的JNIdemo，仅供学习" class="headerlink" title="这是一个基于Android studio 的JNIdemo，仅供学习"></a>这是一个基于Android studio 的JNIdemo，仅供学习</h2><p><a href="https://github.com/chengcnaplex/JNIDemo" target="_blank" rel="external">Demo地址</a></p>
-<h2 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h2><ul>
-<li><p>新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：</p>
+        <p>这是一个基于Android studio 的<a href="https://github.com/chengcnaplex/JNIDemo" target="_blank" rel="external">JNIdemo</a>，仅供学习。</p>
+<h2 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h2><p>新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：</p>
 <p><img src="\image\blog_3\project.png" alt=""></p>
-</li>
-</ul>
-<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><ul>
-<li><p><strong>找到gradle.properties,在下面加上一行<font color="red">android.useDeprecatedNdk=true</font>，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示</strong></p>
-<p>  <img src="\image\blog_3\properties.png" alt=""></p>
-</li>
-</ul>
-<ul>
-<li><p><strong>找到app目录下的build.gradle，在defaultConfig里面加上，这里的作用相当与makefile</strong></p>
-<pre><code>ndk {
-    //在JNI打log 必须加上log,否则会报错log函数未定义,
-    ldLibs &quot;log&quot;
-    //指定生成模块名字,也就是最终的动态库名aplex,相应库文件名libaplex.so moduleName &quot;aplex&quot;
-    moduleName &quot;aplex&quot;
-    // 指定生成哪些处理器架构的动态库文件，如果要运行在x86架构处理器一定需要指定 abiFilters &quot;armeabi&quot; , &quot;x86&quot;
-    abiFilters &quot;armeabi&quot;, &quot;x86&quot;, &quot;armeabi-v7a&quot;
-}
-</code></pre><p>  如下图所示:</p>
-<p>  <img src="\image\blog_3\buildgradle.png" alt=""></p>
-</li>
-</ul>
-<h2 id="编译工程"><a href="#编译工程" class="headerlink" title="编译工程"></a>编译工程</h2><ul>
-<li><p><strong>新建一个类JniNative，并在类中写两个native方法。</strong></p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JniNative</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> &#123;</div><div class="line">        System.loadLibrary(<span class="string">"aplex"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">sayHelloToC</span><span class="params">(String str)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> String <span class="title">HelloFromC</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><p>找到gradle.properties,在下面加上一行<font color="red">android.useDeprecatedNdk=true</font>，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示</p>
+<p><img src="\image\blog_3\properties.png" alt=""></p>
+<p>找到app目录下的build.gradle，在defaultConfig里面加上，这里的作用相当与makefile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ndk &#123;</div><div class="line">	//在JNI打log 必须加上log,否则会报错log函数未定义,</div><div class="line">    ldLibs &quot;log&quot;</div><div class="line">    //指定生成模块名字,也就是最终的动态库名aplex,相应库文件名libaplex.so moduleName &quot;aplex&quot;</div><div class="line">    moduleName &quot;aplex&quot;</div><div class="line">    // 指定生成哪些处理器架构的动态库文件，如果要运行在x86架构处理器一定需要指定 abiFilters &quot;armeabi&quot; , &quot;x86&quot;</div><div class="line">    abiFilters &quot;armeabi&quot;, &quot;x86&quot;, &quot;armeabi-v7a&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如下图所示:</p>
+<p><img src="\image\blog_3\buildgradle.png" alt=""></p>
+<h2 id="编译工程"><a href="#编译工程" class="headerlink" title="编译工程"></a>编译工程</h2><p>新建一个类JniNative，并在类中写两个native方法。</p>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JniNative</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> &#123;</div><div class="line">        System.loadLibrary(<span class="string">"aplex"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">sayHelloToC</span><span class="params">(String str)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> String <span class="title">HelloFromC</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><blockquote>
 <p><strong>这里要注意：System.loadLibrary(“aplex”)会去data\data\packagname\lib下面去找libaplex.so库</strong></p>
 </blockquote>
-</li>
-<li><p><strong>把.java文件编译成.class文件</strong></p>
-<blockquote>
-<p><strong>选择整个项目，找到导航栏，做如下操作：Build-&gt;Make Modlues app。</strong> </p>
-</blockquote>
-</li>
-<li><p><strong>把.class文件编译成.h文件</strong></p>
+<p>把.java文件编译成.class文件</p>
+<pre><code>选择整个项目，找到导航栏，做如下操作：Build-&gt;Make Modlues app。
+</code></pre><p>把.class文件编译成.h文件</p>
 <ul>
 <li>打开命令行插件Terminal</li>
 <li>进入app/build/inermediates/classes/debug目录下</li>
@@ -396,86 +353,18 @@
 <p><img src="\image\blog_3\cmd.png" alt=""></p>
 </li>
 </ul>
-</li>
-<li><p><strong>整理编写jni</strong></p>
+<p>整理编写jni</p>
 <ul>
 <li>在app\src\main 下面新建一个名叫jni的目录</li>
 <li>把刚刚生成的.h文件拷到jni目录中</li>
 <li>jni目录下创建一个.c文件 </li>
 <li><p>把com_example_aplex_jnidemo_JniNative.h内容拷到.c文件中，并且实现.h文件中的函数定义</p>
-<pre><code>/* DO NOT EDIT THIS FILE - it is machine generated */
-#include &lt;jni.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-/* Header for class com_example_aplex_jnidemo_JniNative */
-
-#ifndef _Included_com_example_aplex_jnidemo_JniNative
-#define _Included_com_example_aplex_jnidemo_JniNative
-
-#include &quot;android/log.h&quot;
-static const char *TAG=&quot;JNIDEMO&quot;;
-#define LOGE(fmt, args...) __android_log_print(ANDROID_LOG_ERROR, TAG, fmt, ##args)
-
-#ifdef __cplusplus
-extern &quot;C&quot; {
-#endif
-/*
- * Class:     com_example_aplex_jnidemo_JniNative
- * Method:    sayHelloToC
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_com_example_aplex_jnidemo_JniNative_sayHelloToC
-        (JNIEnv * env, jclass clazz,jstring hellostring){
-        char* pStr = NULL;
-
-        jclass     jstrObj   = (*env)-&gt;FindClass(env, &quot;java/lang/String&quot;);
-        jstring    encode    = (*env)-&gt;NewStringUTF(env, &quot;utf-8&quot;);
-        jmethodID  methodId  = (*env)-&gt;GetMethodID(env, jstrObj, &quot;getBytes&quot;, &quot;(Ljava/lang/String;)[B&quot;);
-        jbyteArray byteArray = (jbyteArray)(*env)-&gt;CallObjectMethod(env, hellostring, methodId, encode);
-        jsize      strLen    = (*env)-&gt;GetArrayLength(env, byteArray);
-        jbyte      *jBuf     = (*env)-&gt;GetByteArrayElements(env, byteArray, JNI_FALSE);
-        if (jBuf &gt; 0)
-        {
-                pStr = (char*)malloc(strLen + 1);
-
-                if (!pStr)
-                {
-                        return;
-                }
-                memcpy(pStr, jBuf, strLen);
-
-                pStr[strLen] = 0;
-        }
-     LOGE(&quot;%s&quot;,pStr);
-        (*env)-&gt;ReleaseByteArrayElements(env, byteArray, jBuf, 0);
-
-}
-
-/*
- * Class:     com_example_aplex_jnidemo_JniNative
- * Method:    HelloFromC
- * Signature: ()Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_com_example_aplex_jnidemo_JniNative_HelloFromC
-        (JNIEnv * env, jclass clazz){
-        char * hello = &quot;hello&quot;;
-        return  (*env)-&gt;NewStringUTF(env,hello);
-}
-
-#ifdef __cplusplus
-}
-#endif
-#endif
-</code></pre></li>
-</ul>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* DO NOT EDIT THIS FILE - it is machine generated */</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="comment">/* Header for class com_example_aplex_jnidemo_JniNative */</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _Included_com_example_aplex_jnidemo_JniNative</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _Included_com_example_aplex_jnidemo_JniNative</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"android/log.h"</span></span></div><div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">char</span> *TAG=<span class="string">"JNIDEMO"</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LOGE(fmt, args...) __android_log_print(ANDROID_LOG_ERROR, TAG, fmt, ##args)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></div><div class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"><span class="comment">/*</span></div><div class="line"> * Class:     com_example_aplex_jnidemo_JniNative</div><div class="line"> * Method:    sayHelloToC</div><div class="line"> * Signature: ()V</div><div class="line"> */</div><div class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_com_example_aplex_jnidemo_JniNative_sayHelloToC</span></span></div><div class="line">        <span class="params">(JNIEnv * env, jclass clazz,jstring hellostring)</span>&#123;</div><div class="line">        <span class="keyword">char</span>* pStr = <span class="literal">NULL</span>;</div><div class="line"></div><div class="line">        jclass     jstrObj   = (*env)-&gt;FindClass(env, <span class="string">"java/lang/String"</span>);</div><div class="line">        jstring    encode    = (*env)-&gt;NewStringUTF(env, <span class="string">"utf-8"</span>);</div><div class="line">        jmethodID  methodId  = (*env)-&gt;GetMethodID(env, jstrObj, <span class="string">"getBytes"</span>, <span class="string">"(Ljava/lang/String;)[B"</span>);</div><div class="line">        jbyteArray byteArray = (jbyteArray)(*env)-&gt;CallObjectMethod(env, hellostring, methodId, encode);</div><div class="line">        jsize      strLen    = (*env)-&gt;GetArrayLength(env, byteArray);</div><div class="line">        jbyte      *jBuf     = (*env)-&gt;GetByteArrayElements(env, byteArray, JNI_FALSE);</div><div class="line">        <span class="keyword">if</span> (jBuf &gt; <span class="number">0</span>)</div><div class="line">        &#123;</div><div class="line">                pStr = (<span class="keyword">char</span>*)<span class="built_in">malloc</span>(strLen + <span class="number">1</span>);</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (!pStr)</div><div class="line">                &#123;</div><div class="line">                        <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="built_in">memcpy</span>(pStr, jBuf, strLen);</div><div class="line">               </div><div class="line">                pStr[strLen] = <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line"> 	LOGE(<span class="string">"%s"</span>,pStr);</div><div class="line">        (*env)-&gt;ReleaseByteArrayElements(env, byteArray, jBuf, <span class="number">0</span>);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * Class:     com_example_aplex_jnidemo_JniNative</div><div class="line"> * Method:    HelloFromC</div><div class="line"> * Signature: ()Ljava/lang/String;</div><div class="line"> */</div><div class="line"><span class="function">JNIEXPORT jstring JNICALL <span class="title">Java_com_example_aplex_jnidemo_JniNative_HelloFromC</span></span></div><div class="line">        <span class="params">(JNIEnv * env, jclass clazz)</span>&#123;</div><div class="line">        <span class="keyword">char</span> * hello = <span class="string">"hello"</span>;</div><div class="line">        <span class="keyword">return</span>  (*env)-&gt;NewStringUTF(env,hello);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></div><div class="line">&#125;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
 </li>
 </ul>
-<ul>
-<li><p><strong>在MainActivity中调用JNI</strong></p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHelloToc</span><span class="params">(View view)</span></span>&#123;</div><div class="line">      	JniNative.sayHelloToC(<span class="string">"Hello C"</span>);</div><div class="line">   &#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">HelloFromC</span><span class="params">(View view)</span></span>&#123;</div><div class="line">       Toast.makeText(MainActivity.<span class="keyword">this</span>, JniNative.HelloFromC(), Toast.LENGTH_SHORT).show();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h2><p><img src="\image\blog_3\hellofromc.png" alt=""></p>
+<p>在MainActivity中调用JNI</p>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHelloToc</span><span class="params">(View view)</span></span>&#123;</div><div class="line">      	JniNative.sayHelloToC(<span class="string">"Hello C"</span>);</div><div class="line">   &#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">HelloFromC</span><span class="params">(View view)</span></span>&#123;</div><div class="line">       Toast.makeText(MainActivity.<span class="keyword">this</span>, JniNative.HelloFromC(), Toast.LENGTH_SHORT).show();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+</code></pre><h2 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h2><p><img src="\image\blog_3\hellofromc.png" alt=""></p>
 <p><img src="\image\blog_3\sayhellotoc.png" alt=""></p>
 
       
@@ -681,7 +570,7 @@ JNIEXPORT jstring JNICALL Java_com_example_aplex_jnidemo_JniNative_HelloFromC
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#这是一个基于Android-studio-的JNIdemo，仅供学习"><span class="nav-number">1.</span> <span class="nav-text">这是一个基于Android studio 的JNIdemo，仅供学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建工程"><span class="nav-number">2.</span> <span class="nav-text">新建工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置环境"><span class="nav-number">3.</span> <span class="nav-text">配置环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译工程"><span class="nav-number">4.</span> <span class="nav-text">编译工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行效果"><span class="nav-number">5.</span> <span class="nav-text">运行效果</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新建工程"><span class="nav-number">1.</span> <span class="nav-text">新建工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置环境"><span class="nav-number">2.</span> <span class="nav-text">配置环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译工程"><span class="nav-number">3.</span> <span class="nav-text">编译工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行效果"><span class="nav-number">4.</span> <span class="nav-text">运行效果</span></a></li></ol></div>
             
           </div>
         </section>
