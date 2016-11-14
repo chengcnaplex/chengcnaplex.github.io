@@ -59,36 +59,24 @@
 
 
 <meta name="description" content="这是一个基于Android studio 的JNIdemo，仅供学习。
-新建工程新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：
-
-配置环境找到gradle.properties,在下面加上一行android.useDeprecatedNdk=true，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示
-
-找到app目录下的build.">
+新建工程新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何在AndroidStudio下使用JNI">
 <meta property="og:url" content="http://yoursite.com/2016/11/10/如何在AndroidStudio下使用JNI/index.html">
 <meta property="og:site_name" content="Chris cheng'Blog">
 <meta property="og:description" content="这是一个基于Android studio 的JNIdemo，仅供学习。
-新建工程新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：
-
-配置环境找到gradle.properties,在下面加上一行android.useDeprecatedNdk=true，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示
-
-找到app目录下的build.">
+新建工程新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：">
 <meta property="og:image" content="http://yoursite.com/\image\blog_3\project.png">
 <meta property="og:image" content="http://yoursite.com/\image\blog_3\properties.png">
 <meta property="og:image" content="http://yoursite.com/\image\blog_3\buildgradle.png">
 <meta property="og:image" content="http://yoursite.com/\image\blog_3\cmd.png">
 <meta property="og:image" content="http://yoursite.com/\image\blog_3\hellofromc.png">
 <meta property="og:image" content="http://yoursite.com/\image\blog_3\sayhellotoc.png">
-<meta property="og:updated_time" content="2016-11-11T05:14:12.827Z">
+<meta property="og:updated_time" content="2016-11-11T09:46:01.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在AndroidStudio下使用JNI">
 <meta name="twitter:description" content="这是一个基于Android studio 的JNIdemo，仅供学习。
-新建工程新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：
-
-配置环境找到gradle.properties,在下面加上一行android.useDeprecatedNdk=true，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示
-
-找到app目录下的build.">
+新建工程新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：">
 <meta name="twitter:image" content="http://yoursite.com/\image\blog_3\project.png">
 
 
@@ -330,7 +318,7 @@
       
         <p>这是一个基于Android studio 的<a href="https://github.com/chengcnaplex/JNIDemo" target="_blank" rel="external">JNIdemo</a>，仅供学习。</p>
 <h2 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h2><p>新建项目工程JNIDemo，把工程结构调成 Project，如下图所示：</p>
-<p><img src="\image\blog_3\project.png" alt=""></p>
+<p><img src="\image\blog_3\project.png" alt=""><br><a id="more"></a></p>
 <h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><p>找到gradle.properties,在下面加上一行<font color="red">android.useDeprecatedNdk=true</font>，解决ndk提示版本低不能自动编译jni。不管高版本低版本都加上，都是不会错的。如下图所示</p>
 <p><img src="\image\blog_3\properties.png" alt=""></p>
 <p>找到app目录下的build.gradle，在defaultConfig里面加上，这里的作用相当与makefile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ndk &#123;</div><div class="line">	//在JNI打log 必须加上log,否则会报错log函数未定义,</div><div class="line">    ldLibs &quot;log&quot;</div><div class="line">    //指定生成模块名字,也就是最终的动态库名aplex,相应库文件名libaplex.so moduleName &quot;aplex&quot;</div><div class="line">    moduleName &quot;aplex&quot;</div><div class="line">    // 指定生成哪些处理器架构的动态库文件，如果要运行在x86架构处理器一定需要指定 abiFilters &quot;armeabi&quot; , &quot;x86&quot;</div><div class="line">    abiFilters &quot;armeabi&quot;, &quot;x86&quot;, &quot;armeabi-v7a&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
