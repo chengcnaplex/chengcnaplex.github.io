@@ -75,7 +75,7 @@ sudo yum install vsftpd
 adduser userftp
 passwd userftp">
 <meta property="og:image" content="http://yoursite.com/\image\blog_5\centos_vsftpd.png">
-<meta property="og:updated_time" content="2016-12-02T07:04:42.329Z">
+<meta property="og:updated_time" content="2016-12-02T07:07:52.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Centos 6 x86的vsftpd的搭建和配置">
 <meta name="twitter:description" content="安装ftp服务器vsftpd
@@ -331,13 +331,13 @@ passwd userftp">
 <pre><code>adduser userftp
 passwd userftp
 </code></pre><a id="more"></a></li>
-<li><p>禁止用户的 ssh 登录权限，只允许 FTP 访问:</p>
+<li><p>禁止用户的 ssh 登录权限，只允许 FTP 访问</p>
 <pre><code>usermod -s /sbin/nologin userftp
 </code></pre></li>
 <li><p>配置 VSFTP</p>
 <pre><code>anonymous_enable=NO
 </code></pre></li>
-<li><p>配置文件关系图：</p>
+<li><p>配置文件关系,如下图所示：</p>
 <p><img src="\image\blog_5\centos_vsftpd.png" alt=""></p>
 </li>
 </ol>
