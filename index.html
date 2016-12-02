@@ -320,6 +320,14 @@
 passwd userftp
 </code></pre></li>
 </ol>
+<ol>
+<li><p>禁止用户的 ssh 登录权限，只允许 FTP 访问:</p>
+<pre><code>usermod -s /sbin/nologin userftp
+</code></pre></li>
+<li><p>配置 VSFTP</p>
+<pre><code>anonymous_enable=NO
+</code></pre></li>
+<li><p>配置文件关系图：</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/12/02/基于Centos-6-x86的vsftpd的搭建和配置/#more" rel="contents">
               阅读全文 &raquo;
