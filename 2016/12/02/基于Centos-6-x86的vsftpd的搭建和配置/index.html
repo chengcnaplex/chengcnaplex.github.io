@@ -63,17 +63,7 @@ sudo yum install vsftpd
 
 添加用户
 adduser userftp
-passwd userftp
-
-
-
-禁止用户的 ssh 登录权限，只允许 FTP 访问:
-usermod -s /sbin/nologin userftp
-
-配置 VSFTP
-anonymous_enable=NO
-
-配置文件关系图：">
+passwd userftp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于Centos 6 x86的vsftpd的搭建和配置">
 <meta property="og:url" content="http://yoursite.com/2016/12/02/基于Centos-6-x86的vsftpd的搭建和配置/index.html">
@@ -83,19 +73,9 @@ sudo yum install vsftpd
 
 添加用户
 adduser userftp
-passwd userftp
-
-
-
-禁止用户的 ssh 登录权限，只允许 FTP 访问:
-usermod -s /sbin/nologin userftp
-
-配置 VSFTP
-anonymous_enable=NO
-
-配置文件关系图：">
+passwd userftp">
 <meta property="og:image" content="http://yoursite.com/\image\blog_5\centos_vsftpd.png">
-<meta property="og:updated_time" content="2016-12-02T06:37:16.245Z">
+<meta property="og:updated_time" content="2016-12-02T06:40:17.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Centos 6 x86的vsftpd的搭建和配置">
 <meta name="twitter:description" content="安装ftp服务器vsftpd
@@ -103,17 +83,7 @@ sudo yum install vsftpd
 
 添加用户
 adduser userftp
-passwd userftp
-
-
-
-禁止用户的 ssh 登录权限，只允许 FTP 访问:
-usermod -s /sbin/nologin userftp
-
-配置 VSFTP
-anonymous_enable=NO
-
-配置文件关系图：">
+passwd userftp">
 <meta name="twitter:image" content="http://yoursite.com/\image\blog_5\centos_vsftpd.png">
 
 
@@ -360,9 +330,7 @@ anonymous_enable=NO
 <li><p>添加用户</p>
 <pre><code>adduser userftp
 passwd userftp
-</code></pre></li>
-</ol>
-<ol>
+</code></pre><a id="more"></a></li>
 <li><p>禁止用户的 ssh 登录权限，只允许 FTP 访问:</p>
 <pre><code>usermod -s /sbin/nologin userftp
 </code></pre></li>
@@ -370,7 +338,6 @@ passwd userftp
 <pre><code>anonymous_enable=NO
 </code></pre></li>
 <li><p>配置文件关系图：</p>
-<a id="more"></a>
 </li>
 </ol>
 <p><img src="\image\blog_5\centos_vsftpd.png" alt=""></p>
