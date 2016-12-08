@@ -59,39 +59,30 @@
 
 
 <meta name="description" content="参考文档
-
 服务器搭建：
 http://www.cnblogs.com/zengjfgit/p/5897385.html
 
-权限报错：ERROR 2003 (HY000): Can’t connect to MySQL server on ‘192.168.1.249’ (111)
-http://www.cnblogs.com/helloworldtoyou/p/6029041.html
-
-忘记">
+权限报错：ERROR 2003 (HY000): Can&amp;#39;t connect to MySQL server on &amp;#39;192.168.1.249&amp;#39; (111)
+http://www.cnblogs.com/helloworldtoyou/p/602904">
 <meta property="og:type" content="article">
-<meta property="og:title" content="'基于Centos_6.5的MySql_5.1.17数据库搭建和权限配置'">
+<meta property="og:title" content="基于Centos_6.5的MySql_5.1.17数据库搭建和权限配置">
 <meta property="og:url" content="http://yoursite.com/2016/12/08/基于Centos-6-5的MySql-5-1-17数据库搭建和权限配置/index.html">
 <meta property="og:site_name" content="Chris cheng'Blog">
 <meta property="og:description" content="参考文档
-
 服务器搭建：
 http://www.cnblogs.com/zengjfgit/p/5897385.html
 
-权限报错：ERROR 2003 (HY000): Can’t connect to MySQL server on ‘192.168.1.249’ (111)
-http://www.cnblogs.com/helloworldtoyou/p/6029041.html
-
-忘记">
-<meta property="og:updated_time" content="2016-12-08T03:51:59.341Z">
+权限报错：ERROR 2003 (HY000): Can&amp;#39;t connect to MySQL server on &amp;#39;192.168.1.249&amp;#39; (111)
+http://www.cnblogs.com/helloworldtoyou/p/602904">
+<meta property="og:updated_time" content="2016-12-08T05:21:18.663Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="'基于Centos_6.5的MySql_5.1.17数据库搭建和权限配置'">
+<meta name="twitter:title" content="基于Centos_6.5的MySql_5.1.17数据库搭建和权限配置">
 <meta name="twitter:description" content="参考文档
-
 服务器搭建：
 http://www.cnblogs.com/zengjfgit/p/5897385.html
 
-权限报错：ERROR 2003 (HY000): Can’t connect to MySQL server on ‘192.168.1.249’ (111)
-http://www.cnblogs.com/helloworldtoyou/p/6029041.html
-
-忘记">
+权限报错：ERROR 2003 (HY000): Can&amp;#39;t connect to MySQL server on &amp;#39;192.168.1.249&amp;#39; (111)
+http://www.cnblogs.com/helloworldtoyou/p/602904">
 
 
 
@@ -115,7 +106,7 @@ http://www.cnblogs.com/helloworldtoyou/p/6029041.html
   <link rel="canonical" href="http://yoursite.com/2016/12/08/基于Centos-6-5的MySql-5-1-17数据库搭建和权限配置/"/>
 
 
-  <title> '基于Centos_6.5的MySql_5.1.17数据库搭建和权限配置' | Chris cheng'Blog </title>
+  <title> 基于Centos_6.5的MySql_5.1.17数据库搭建和权限配置 | Chris cheng'Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +255,7 @@ http://www.cnblogs.com/helloworldtoyou/p/6029041.html
             
             
               
-                '基于Centos_6.5的MySql_5.1.17数据库搭建和权限配置'
+                基于Centos_6.5的MySql_5.1.17数据库搭建和权限配置
               
             
           </h1>
@@ -330,22 +321,72 @@ http://www.cnblogs.com/helloworldtoyou/p/6029041.html
       
 
       
-        <ol>
-<li><p>参考文档</p>
-<ol>
+        <h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ol>
 <li><p>服务器搭建：</p>
 <pre><code>http://www.cnblogs.com/zengjfgit/p/5897385.html
 </code></pre></li>
-<li><p>权限报错：ERROR 2003 (HY000): Can’t connect to MySQL server on ‘192.168.1.249’ (111)</p>
+<li><p>权限报错：<code>ERROR 2003 (HY000): Can&#39;t connect to MySQL server on &#39;192.168.1.249&#39; (111)</code></p>
 <pre><code>http://www.cnblogs.com/helloworldtoyou/p/6029041.html
 </code></pre></li>
 <li><p>忘记密码的解决方法：</p>
 <pre><code>http://alsww.blog.51cto.com/2001924/1121676
 </code></pre></li>
 </ol>
-</li>
+<a id="more"></a>
+<h2 id="搭建服务器"><a href="#搭建服务器" class="headerlink" title="搭建服务器"></a>搭建服务器</h2><ol>
+<li><p>安装</p>
+<pre><code>yum -y install mysql-server
+</code></pre></li>
+<li><p>设置mysql随系统启动</p>
+<pre><code>chkconfig mysqld on
+</code></pre></li>
+<li><p>确认mysql自启动</p>
+<pre><code>chkconfig --list mysqld
+</code></pre></li>
+<li><p>启动mysql</p>
+<pre><code>/etc/init.d/mysqld start
+</code></pre></li>
+<li><p>设置root密码</p>
+<pre><code>mysqladmin -u root password &quot;your passwd&quot;
+</code></pre></li>
+<li><p>忘记密码</p>
+<pre><code>#先关闭mysql服务
+/etc/init.d/mysqld stop
+
+#以命令行参数启动mysql：
+mysqld_safe --user=mysql --skip-grant-tables --skip-networking &amp; 
+
+#用mysql用户登录        
+mysql -u root mysql 
+
+#重新设置密码
+UPDATE user SET Password=PASSWORD(’newpassword’) where USER=’root’; 
+
+#刷新权限
+FLUSH PRIVILEGES;
+
+#退出 
+quit
+
+#启动 
+/etc/init.d/mysqld restart 
+
+#输入账户密码
+mysql -uroot -p 
+Enter password: &lt;输入新设的密码newpassword&gt; 
+</code></pre></li>
 </ol>
-<p>##搭建服务器</p>
+<h2 id="远程登录"><a href="#远程登录" class="headerlink" title="远程登录"></a>远程登录</h2><ol>
+<li><p>输入命令测试远程连接：</p>
+<pre><code>mysql -h 127.0.0.1 -u root -p
+</code></pre></li>
+<li><p>报错：</p>
+<pre><code>ERROR 2003 (HY000): Can&apos;t connect to MySQL server on &apos;192.168.1.249&apos; (111)
+</code></pre></li>
+<li><p>解决：</p>
+<pre><code>http://www.cnblogs.com/helloworldtoyou/p/6029041.html
+</code></pre></li>
+</ol>
 
       
     </div>
@@ -412,7 +453,7 @@ http://www.cnblogs.com/helloworldtoyou/p/6029041.html
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/12/08/基于Centos-6-5的MySql-5-1-17数据库搭建和权限配置/"
-           data-title="'基于Centos_6.5的MySql_5.1.17数据库搭建和权限配置'" data-url="http://yoursite.com/2016/12/08/基于Centos-6-5的MySql-5-1-17数据库搭建和权限配置/">
+           data-title="基于Centos_6.5的MySql_5.1.17数据库搭建和权限配置" data-url="http://yoursite.com/2016/12/08/基于Centos-6-5的MySql-5-1-17数据库搭建和权限配置/">
       </div>
     
   </div>
@@ -550,7 +591,7 @@ http://www.cnblogs.com/helloworldtoyou/p/6029041.html
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-number">1.</span> <span class="nav-text">参考文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建服务器"><span class="nav-number">2.</span> <span class="nav-text">搭建服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程登录"><span class="nav-number">3.</span> <span class="nav-text">远程登录</span></a></li></ol></div>
             
           </div>
         </section>
